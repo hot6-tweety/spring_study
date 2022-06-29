@@ -1,0 +1,32 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.1'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	 //로컬저장소 사용
+	//mavenLocal() 
+	
+	//원격저장소 사용
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.session:spring-session-core'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//jsp
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	//jstl
+	implementation 'javax.servlet:jstl:1.2'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

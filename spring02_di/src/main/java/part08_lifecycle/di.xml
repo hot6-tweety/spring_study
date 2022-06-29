@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 
+	[1] init-method : 빈 생성 완료 후 실행할 메소드 등록
+	[2] destroy-method : 빈이 소멸되기 직전에 실행할 메소드 등록
+ -->
+<bean id="svc" class="part08_lifecycle.ServiceImp" init-method="before" destroy-method="end" />
+	
+</beans>

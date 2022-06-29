@@ -1,0 +1,45 @@
+package part02_constructor;
+
+import java.util.Random;
+
+public class ServiceImp implements Service{
+	private String name;
+	private int age;
+	private String dept;
+	private Random ran;
+	
+	public ServiceImp() {
+		
+	}
+
+	public ServiceImp(String name) {
+		this.name = name;
+	}
+	
+	public ServiceImp(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
+	
+	public ServiceImp(Random ran) {
+		this.ran = ran;
+	}
+	@Override
+	public void prn1() {
+		System.out.println("name:"+ name);
+		
+	}
+
+	@Override
+	public void prn2() {
+		System.out.printf("name:%s age:%d\n",name,age);
+		
+	}
+
+	@Override
+	public void prn3() {
+		System.out.printf("ran : %.2f\n", ran.nextDouble());
+		
+	}
+	
+}
