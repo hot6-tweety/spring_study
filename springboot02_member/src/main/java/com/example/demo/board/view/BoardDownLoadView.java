@@ -8,22 +8,26 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.servlet.view.AbstractView;
 
 import com.example.demo.board.dao.BoardDAO;
 
 //다운로드 창을 띄우기위한 뷰페이지
+
 public class BoardDownLoadView extends AbstractView {
+	@Autowired
 	private BoardDAO dao;
 
 	public BoardDownLoadView() {
 
 	}
 	
-	public void setDao(BoardDAO dao) {
-		this.dao = dao;
-	}
+	//public void setDao(BoardDAO dao) {
+	//	this.dao = dao;
+	//}
 
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,

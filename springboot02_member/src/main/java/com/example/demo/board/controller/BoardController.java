@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,16 +28,17 @@ public class BoardController {
 	private BoardService service;
 	private PageDTO pdto;
 	private int currentPage;
-
+	
+	@Autowired
 	public BoardController() {
 
 	}
 
-	public void setService(BoardService service) {
-		this.service = service;
-	}
+//	public void setService(BoardService service) {
+//		this.service = service;
+//	}
 
-	@RequestMapping("/list.sb")
+	@RequestMapping("/board/list.do")
 	public ModelAndView listMethod(PageDTO pv, ModelAndView mav) {
 		int totalRecord = service.countProcess();
 		if (totalRecord >= 1) {
@@ -56,14 +58,16 @@ public class BoardController {
 		return mav;
 	}// end listMethod()////////////////////////////////////
 
-	@RequestMapping(value = "/write.sb", method = RequestMethod.GET)
-	public ModelAndView writeMethod(BoardDTO dto, PageDTO pv, ModelAndView mav) {
+	@RequestMapping(value = "//board/write.do", method = RequestMethod.GET)
+	public ModelAndView writeMethod(HttpServletRequest request, BoardDTO dto, PageDTO pv, ModelAndView mav) {
+		String viewName = (String)request.getAttribute("viewName");
        if(dto.getRef()!=0) { // 답변글이면...
     	   mav.addObject("currentPage", pv.getCurrentPage());
     	   mav.addObject("dto", dto);
        }
 		
-        mav.setViewName("board/write");
+        //mav.setViewName("board/write");
+       mav.setViewName(viewName);
 		return mav;
 	}// end writeMethod()//////////////////////////////////
 
@@ -81,9 +85,9 @@ public class BoardController {
 		
 		//답변글이면
 		if(dto.getRef()!=0) {			
-			return "redirect:/list.sb?currentPage=" + pv.getCurrentPage();
+			return "redirect:/board/list.do?currentPage=" + pv.getCurrentPage();
 		}else {//제목글이면			
-			return "redirect:/list.sb";
+			return "redirect:/board/list.do";
 		}	
 		
 		

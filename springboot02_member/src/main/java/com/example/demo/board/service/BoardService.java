@@ -2,9 +2,11 @@ package com.example.demo.board.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.example.demo.board.dto.BoardDTO;
 import com.example.demo.board.dto.PageDTO;
-
+@Service
 public interface BoardService {
 	public int countProcess(); 
 	public List<BoardDTO> listProcess(PageDTO pv);

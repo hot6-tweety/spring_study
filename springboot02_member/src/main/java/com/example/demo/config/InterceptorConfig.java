@@ -1,9 +1,11 @@
-package com.example.demo.common.interceptor;
+package com.example.demo.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import com.example.demo.common.interceptor.ViewNameInterceptor;
 
 @Configuration
 //public class InterceptorConfig extends WebMvcConfigurerAdapter {

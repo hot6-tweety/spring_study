@@ -3,10 +3,16 @@ package com.example.demo.board.service;
 import java.io.File;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.example.demo.board.dao.BoardDAO;
 import com.example.demo.board.dto.BoardDTO;
 import com.example.demo.board.dto.PageDTO;
 
+@Service
+@Transactional(propagation = Propagation.REQUIRED)
 public class BoardServiceImp implements BoardService {
 	private BoardDAO dao;
 
